@@ -1,7 +1,7 @@
 ARG PLATFORM=linux/arm/v5
 ARG DISTRO=debian:bookworm
 
-FROM --platform $PLATFORM $DISTRO
+FROM --platform=$PLATFORM $DISTRO
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
