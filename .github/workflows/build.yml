@@ -1,0 +1,11 @@
+name: Container
+on:
+  workflow_dispatch:
+
+jobs:
+  docker-steps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: docker run ./Dockerfile -e "INPUT_ARGS" -e "HOME" -v "/home/runner/work/bin/bin":"/github/workspace"
