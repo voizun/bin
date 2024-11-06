@@ -55,6 +55,6 @@ RUN git clone https://github.com/jkcoxson/JitStreamer.git;
 WORKDIR /buildenv/JitStreamer
 RUN cargo build --release -C opt-level=s -C lto -C link-args=-Wl,-x,-S -C codegen-units=1 -C panic="abort" -C strip="symbols";
 
-RUN --ultra-brute -o ./jit_streamer-(echo $PLATFORM | sed "s/\//-/g") target/release/jit_streamer
+RUN upx --ultra-brute -o ./jit_streamer-(echo $PLATFORM | sed "s/\//-/g") target/release/jit_streamer
 
 CMD ["/bin/sh", "mv", "/buildenv/JitStreamer/jit_streamer-*" "/github/workspace/"]
