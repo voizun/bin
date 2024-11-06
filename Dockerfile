@@ -1,5 +1,5 @@
 ARG PLATFORM=linux/arm/v5
-ARG DISTRO=debian:bookworm
+ARG DISTRO=debian:bookworm-backports
 
 FROM --platform=$PLATFORM $DISTRO
 
