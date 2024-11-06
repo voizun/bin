@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Release
-        run: gh release create $(date +"%Y%m%d")
+        run: gh release create $(date +"%Y%m%d") | true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
