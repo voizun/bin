@@ -55,7 +55,7 @@ RUN git clone https://github.com/jkcoxson/JitStreamer.git;
 WORKDIR /buildenv/JitStreamer
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 COPY Cargo.toml ../
-RUN . $HOME/.cargo/env && cargo build --release;
+RUN . $HOME/.cargo/env && cargo build --release --config ../Cargo.toml;
 
 RUN upx --ultra-brute -o ./jit_streamer-(echo $PLATFORM | sed "s/\//-/g") target/release/jit_streamer
 
