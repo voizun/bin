@@ -1,5 +1,5 @@
 ARG PLATFORM=linux/amd64
-ARG DISTRO=ubuntu:24.04
+ARG DISTRO=ubuntu:24.10
 
 FROM --platform=$PLATFORM $DISTRO
 
