@@ -43,7 +43,7 @@ RUN apt remove -y libssl-dev
 
 RUN git clone https://github.com/openssl/openssl.git --verbose --progress;
 WORKDIR /buildenv/openssl
-RUN ./Configure -static --static -mfpu=neon; make -j`$nproc`; make install;
+RUN ./Configure -static --static; make -j`$nproc`; make install;
 
 WORKDIR /buildenv
 
