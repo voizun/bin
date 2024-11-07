@@ -43,7 +43,7 @@ RUN apt remove -y libssl-dev
 
 RUN git clone https://github.com/openssl/openssl.git --verbose --progress;
 WORKDIR /buildenv/openssl
-RUN ./Configure -static --static; make -j`$nproc` > /dev/null; make install;
+RUN ./Configure -static --static; make -j`$nproc` 2>&1 /dev/null; make install;
 
 WORKDIR /buildenv
 
@@ -54,15 +54,7 @@ RUN git clone https://github.com/jkcoxson/JitStreamer.git;
 
 WORKDIR /buildenv/JitStreamer
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-RUN cat << EOF | tee -a Cargo.toml
-[profile.release]
-opt-level="s"
-lto=true
-link-args="-Wl,-x,-S"
-codegen-units=1
-panic="abort"
-strip="symbols"
-EOF
+RUN echo -e "[profile.release]\nopt-level="s"\nlto=true\nlink-args="-Wl,-x,-S"\ncodegen-units=1\npanic="abort"\nstrip="symbols"" | tee -a Cargo.toml
 RUN . $HOME/.cargo/env && cargo build --release;
 
 RUN upx --ultra-brute -o ./jit_streamer-(echo $PLATFORM | sed "s/\//-/g") target/release/jit_streamer
