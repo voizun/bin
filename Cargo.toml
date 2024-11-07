@@ -1,6 +1,6 @@
 [profile.release]
 opt-level="s"
-lto=1
+lto=true
 link-args="-Wl,-x,-S"
 codegen-units=1
 panic="abort"
