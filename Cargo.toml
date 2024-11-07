@@ -1,7 +1,0 @@
-[profile.release]
-opt-level="s"
-lto=true
-link-args="-Wl,-x,-S"
-codegen-units=1
-panic="abort"
-strip="symbols"
