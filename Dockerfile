@@ -48,9 +48,9 @@ RUN ./Configure -static --static; make -j`$nproc`; make install;
 WORKDIR /buildenv
 
 # JitStreamer build time
-RUN git clone https://github.com/jkcoxson/plist_plust;
-RUN git clone https://github.com/jkcoxson/rusty_libimobiledevice;
-RUN git clone https://github.com/jkcoxson/JitStreamer;
+RUN git clone https://github.com/jkcoxson/plist_plus.git;
+RUN git clone https://github.com/jkcoxson/rusty_libimobiledevice.git;
+RUN git clone https://github.com/jkcoxson/JitStreamer.git;
 
 WORKDIR /buildenv/JitStreamer
 RUN cargo build --release -C opt-level=s -C lto -C link-args=-Wl,-x,-S -C codegen-units=1 -C panic="abort" -C strip="symbols";
