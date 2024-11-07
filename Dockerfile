@@ -1,5 +1,5 @@
 ARG PLATFORM=linux/amd64
-ARG DISTRO=ubuntu:24.10
+ARG DISTRO=debian:trixie-backports
 
 FROM --platform=$PLATFORM $DISTRO
 
@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
 RUN apt update
-RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx curl libcurl4-openssl-dev librust-curl*
+RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx-ucl curl libcurl4-openssl-dev librust-curl+* librust-curl-dev 
 
 RUN mkdir /buildenv
 
