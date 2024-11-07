@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
 RUN apt update
-RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx-ucl
+RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx-ucl curl
 
 RUN mkdir /buildenv
 
@@ -54,7 +54,7 @@ RUN git clone https://github.com/jkcoxson/JitStreamer.git;
 
 WORKDIR /buildenv/JitStreamer
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-RUN cargo build --release -C opt-level=s -C lto -C link-args=-Wl,-x,-S -C codegen-units=1 -C panic="abort" -C strip="symbols";
+RUN source $HOME/.cargo/env && cargo build --release -C opt-level=s -C lto -C link-args=-Wl,-x,-S -C codegen-units=1 -C panic="abort" -C strip="symbols";
 
 RUN upx --ultra-brute -o ./jit_streamer-(echo $PLATFORM | sed "s/\//-/g") target/release/jit_streamer
 
