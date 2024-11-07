@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
 RUN apt update
-RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx-ucl curl libcurl4-openssl-dev > /dev/null 2>&1
+RUN apt install -y git pkg-config autoconf automake libtool make build-essential python3 libssl-dev libtatsu-dev upx-ucl curl libcurl4-openssl-dev librust-curl* > /dev/null 2>&1
 
 RUN mkdir /buildenv
 
