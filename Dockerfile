@@ -1,5 +1,5 @@
-ARG PLATFORM=linux/arm/v5
-ARG DISTRO=debian:bookworm-backports
+ARG PLATFORM=linux/amd64
+ARG DISTRO=debian:trixie-backports
 
 FROM --platform=$PLATFORM $DISTRO
 
